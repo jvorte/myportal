@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Buhid&family=Shadows+Into+Light&display=swap');
+
+body{ font: 14px sans-serif; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.infos{
+    margin-top: 50px;
+}
+
+
+h1 ,p{
+    font-family: "Noto Sans Buhid", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+footer{
+    margin-top: auto;
+}
+
+.footer p {
+    margin-bottom: 0;
+}
