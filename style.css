@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Buhid&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Rajdhani:wght@300;400;500;600;700&family=Shadows+Into+Light&display=swap');
 
 body{ font: 14px sans-serif; 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
+}
+#bg1{
+
+    
 }
 
 
@@ -12,16 +18,25 @@ body{ font: 14px sans-serif;
 }
 
 
-h1 ,p{
-    font-family: "Noto Sans Buhid", sans-serif;
-    font-weight: 400;
+label,span,p{
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
     font-style: normal;
 }
-
+h1{
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;   
+    font-style: normal;
+    font-weight: 400;
+}
 footer{
     margin-top: auto;
 }
 
-.footer p {
+.footer h6 {
     margin-bottom: 0;
+    font-family: "Shadows Into Light", cursive;
+    font-weight: 500;
+    font-style: normal;
+    padding: 10px;
 }
