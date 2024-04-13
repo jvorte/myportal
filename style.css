@@ -12,7 +12,7 @@ body{ font: 14px sans-serif;
 
 
 #bg{
-background-image: url('img/12.jpg');   
+background-image: url('img/4.jpg');   
 background-size: cover;
 
 }
@@ -30,7 +30,7 @@ label,span,p{
   font-family: "Archivo Black", sans-serif;
   font-weight: 400;
   font-style: normal;
-  padding-top: 3em;
+  padding: 2em 0 0 0;
   color: #f1f1f1;
   text-shadow: 2px 2px 2px #000000;
   
@@ -48,7 +48,7 @@ text-shadow: 1px 1px 1px #000000;
   /* -------------------------portal--------------------------------- */
 
   #bg_portal{
-    background-image: url('img/9.jpg');  
+    background-image: url('img/15.jpg');  
     background-size: cover; 
   }
   nav{
