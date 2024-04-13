@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Shadows+Into+Light&display=swap');
+
+/* -------------------------index--------------------------------- */
 body{ font: 14px sans-serif; 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     
 }
+
+
+
 #bg{
 background-image: url('img/12.jpg');   
 background-size: cover;
@@ -27,20 +32,30 @@ label,span,p{
   font-style: normal;
   padding-top: 3em;
   color: #f1f1f1;
-  text-shadow: 2px 2px 4px #000000;
+  text-shadow: 2px 2px 2px #000000;
   
   
 }
 .front h4 {
 color: #f1f1f1;
-text-shadow: 2px 2px 2px #000000;
+text-shadow: 1px 1px 1px #000000;
 }
 .front h6 {
-  color: grey;
+  color: rgb(10, 54, 27);
 
   }
+ /* -------------------------end index--------------------------------- */
+  /* -------------------------portal--------------------------------- */
 
+  #bg_portal{
+    background-image: url('img/9.jpg');  
+    background-size: cover; 
+  }
+  nav{
+    font-family: "DM Sans", sans-serif;
+  }
 
+  /* ----------------------end---portal--------------------------------- */
 footer{
     margin-top: auto;
 }
