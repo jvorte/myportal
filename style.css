@@ -31,11 +31,14 @@ label,span,p{
   
   
 }
-.front h6 {
-
+.front h4 {
 color: #f1f1f1;
-text-shadow: 2px 2px 4px #000000;
+text-shadow: 2px 2px 2px #000000;
 }
+.front h6 {
+  color: grey;
+
+  }
 
 
 footer{

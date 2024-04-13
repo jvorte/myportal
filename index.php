@@ -112,7 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="container front ">
 <h1 class="mt-5 display-1">MyPortal</h1> 
        
-       <h6 class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing
+       <h4 class="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing
       Harum obcaecati, quo fugiat suscipit 
       voluptate deleniti consectetur odit doloribus neque hic, odio praesentium eum debitis et mollitia!</h6>
   <!-- --------------------modal------------------------- -->
