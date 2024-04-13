@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Shadows+Into+Light&display=swap');
 body{ font: 14px sans-serif; 
     min-height: 100vh;
     display: flex;
@@ -7,20 +7,9 @@ body{ font: 14px sans-serif;
     
 }
 #bg{
-background-image: url('img/2.jpg');
+background-image: url('img/12.jpg');   
+background-size: cover;
 
-    
-  
-}
-#bg1{
-
-    
-}
-
-
-
-.infos{
-    margin-top: 50px;
 }
 
 
@@ -32,13 +21,23 @@ label,span,p{
 
  
 }
-h1{
-  font-family: "DM Sans", sans-serif;
-  font-optical-sizing: auto;
+.front h1{
+  font-family: "Archivo Black", sans-serif;
   font-weight: 400;
   font-style: normal;
+  padding-top: 3em;
+  color: #f1f1f1;
+  text-shadow: 2px 2px 4px #000000;
+  
   
 }
+.front h6 {
+
+color: #f1f1f1;
+text-shadow: 2px 2px 4px #000000;
+}
+
+
 footer{
     margin-top: auto;
 }
