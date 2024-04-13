@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Buhid&family=Shadows+Into+Light&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Rajdhani:wght@300;400;500;600;700&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 body{ font: 14px sans-serif; 
     min-height: 100vh;
@@ -7,10 +6,17 @@ body{ font: 14px sans-serif;
     flex-direction: column;
     
 }
+#bg{
+background-image: url('img/2.jpg');
+
+    
+  
+}
 #bg1{
 
     
 }
+
 
 
 .infos{
@@ -19,15 +25,19 @@ body{ font: 14px sans-serif;
 
 
 label,span,p{
-    font-family: "Rajdhani", sans-serif;
-    font-weight: 500;
-    font-style: normal;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+
+ 
 }
 h1{
-    font-family: "Comfortaa", sans-serif;
-    font-optical-sizing: auto;   
-    font-style: normal;
-    font-weight: 400;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  
 }
 footer{
     margin-top: auto;
