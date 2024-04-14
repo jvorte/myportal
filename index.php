@@ -101,12 +101,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   
 <!-- heading -->
-<!-- <nav class="navbar bg-muted">
+<nav class="navbar bg-light">
   <div class="container">
-    <span class=" navbar-brand mb-0"> <?php echo date("l jS \of F Y h:i:s A")?></span>
-    
+    <span class=" navbar-brand mb-0"> <?php echo date("l jS \of F Y h:i:s A")?></span>    
   </div>
-</nav> -->
+</nav>
 <!--end heading -->
 
 <div class="container front ">
@@ -116,8 +115,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       voluptate deleniti ebitis et mollitia!</h6>
   <!-- --------------------modal------------------------- -->
   
-  <h6>*If you don't have acount please contact with ITgroup</h6>
-  <button type="button" class="btn btn-primary mt-4 " data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Login</button>
+  <h6>*If you don't have acount please contact with <a href="">ITgroup</a></h6>
+
+  <button type="button" class="btn btn-primary mt-4 " data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 1 16 16">
+  <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+  <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+  </svg>
+login</button>
   
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -151,8 +156,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send message</button>
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button> -->
         </div>
       </div>
     </div>

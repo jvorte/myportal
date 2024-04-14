@@ -1,59 +1,94 @@
-@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shadows+Into+Light&display=swap');
 
 /* -------------------------index--------------------------------- */
-body{ font: 14px sans-serif; 
+body{ 
+    font: 14px sans-serif; 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     
 }
 
-
+.navbar-brand{
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
 
 #bg{
-background-image: url('img/16.jpg');   
+background-image: url('img/2.jpg');   
 background-size: cover;
-
+background-position-y: center;
 }
 
 
 label,span,p{
-  font-family: "DM Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
   font-style: normal;
 
  
 }
+
 .front h1{
   font-family: "Archivo Black", sans-serif;
   font-weight: 400;
   font-style: normal;
-  padding: 2em 0 0 0;
+  padding: 3em 0 0 0;
   color: #f1f1f1;
-  text-shadow: 2px 2px 2px #000000;
+  text-shadow: 2px  2px #000000;
   
   
 }
 .front h4 {
-color: #f1f1f1;
-text-shadow: 1px 1px 1px #000000;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #f1f1f1;
+  text-shadow: 1px 1px 1px #000000;
 }
 .front h6 {
-  color: rgb(160, 194, 173);
-
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: rgb(249, 250, 249);
+  text-shadow: 2px  2px #000000;
   }
  /* -------------------------end index--------------------------------- */
   /* -------------------------portal--------------------------------- */
 
   #bg_portal{
-    background-image: url('img/20.jpg');  
+    background-image: url('img/7.jpg');  
     background-size: cover; 
+    
+  
   }
   nav{
-    font-family: "DM Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   }
+
+  .left-panel{
+    border-radius: 30px;
+    height: 600px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  }
+  .left-panel h3{
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+   
+  }
+
+  
+  .right-panel{
+    border-radius: 30px;
+    height: 600px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  }
+
 
   /* ----------------------end---portal--------------------------------- */
 footer{
