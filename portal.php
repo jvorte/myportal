@@ -60,7 +60,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </li>
     
         <li class="nav-item">        
-        <a href="login_system/logout.php" class="nav-link ml-3">Sign Out of Your Account</a>
+        <a href="login_system/logout.php" class="nav-link ml-3"><i class="bi bi-box-arrow-right"></i>Sign Out of Your Account</a>
         </li>      
         
       </ul>
