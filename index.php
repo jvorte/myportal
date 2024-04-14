@@ -113,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <h1 class="mt-5 display-1">MyPortal</h1> 
        
        <h4 class="mt-2">Lorem ipsum dolor sit,
-      voluptate deleniti consectetur odit doloribus neque hic, odio praesentium eum debitis et mollitia!</h6>
+      voluptate deleniti ebitis et mollitia!</h6>
   <!-- --------------------modal------------------------- -->
   
   <h6>*If you don't have acount please contact with ITgroup</h6>

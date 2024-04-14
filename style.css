@@ -12,7 +12,7 @@ body{ font: 14px sans-serif;
 
 
 #bg{
-background-image: url('img/4.jpg');   
+background-image: url('img/16.jpg');   
 background-size: cover;
 
 }
@@ -41,14 +41,14 @@ color: #f1f1f1;
 text-shadow: 1px 1px 1px #000000;
 }
 .front h6 {
-  color: rgb(10, 54, 27);
+  color: rgb(160, 194, 173);
 
   }
  /* -------------------------end index--------------------------------- */
   /* -------------------------portal--------------------------------- */
 
   #bg_portal{
-    background-image: url('img/15.jpg');  
+    background-image: url('img/20.jpg');  
     background-size: cover; 
   }
   nav{
