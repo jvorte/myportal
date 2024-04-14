@@ -91,6 +91,9 @@ label,span,p{
 
 
   /* ----------------------end---portal--------------------------------- */
+  #icon{
+    height: 33px;
+  }
 footer{
     margin-top: auto;
 }
