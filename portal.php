@@ -8,6 +8,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 ?>
+
  
  <!doctype html>
 <html lang="en">
@@ -16,7 +17,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MyPortal</title>
     <link rel="stylesheet" href="style.css">
+         <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+     <!-- Bootstrap Font Icon CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
   </head>
   <body id="bg_portal">
 <!-- ------------------navbar----------------------- -->
@@ -24,7 +28,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
-    <a class="navbar-brand" href="#"><img id="icon" src="icons/2.png" alt="" srcset=""></a>
+    <a class="navbar-brand" href="#"><img id="icon" src="icons/3.png" alt="" srcset=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -51,7 +55,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    
        <li class="nav-item">
        <a class="nav-link" href="#">
-       <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+       <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
         <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
         <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z"/>
       </svg>
@@ -97,11 +101,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <!-- ---------------center----------------------- -->
 
-<div class="container pt-5">
+<div class="container pt-4">
 
         <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-success" type="submit">Search</button>
+        <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+        <button type="submit" class="btn btn-danger"><span class="bi-search"></span> Search</button>
        </form>
 
 </div>
@@ -112,17 +116,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="col col-lg-6 pb-3">
      <div class="left-panel p-3 border bg-light">
   <!-- ---------------------------left-area--------------------------------- -->
-    <h3><img src="" alt="" srcset=""><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-bookmark-heart" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
-      <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
-    </svg> Favorites</h3>
+    <h2><img src="" alt="" srcset="">Usefull Links</h2>
 
         <ul class="list-group list-group-flush mt-5 text-start ">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
+        <li class="list-group-item"><a href=""><i class="bi bi-luggage"></i> Plan your business trip</a></li>
+        <li class="list-group-item"><a href=""><i class="bi bi-paperclip"></i> Insert Certificate Of Your Illness</a></li>
+        <li class="list-group-item"><a href=""><i class="bi bi-alphabet"></i> Online Lessons</a></li>
+        <li class="list-group-item"><a href=""><i class="bi bi-house-add"></i> Change Your Adress</a></li>
+        <li class="list-group-item"><a href=""><i class="bi bi-wallet"></i> Career</a></li>
         </ul>
 
 
@@ -132,12 +133,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="col-md-6">
       <div class="right-panel p-3 border bg-light">
          <!-- ---------------------------right-area--------------------------------- -->
+         <h2><img src="" alt="" srcset=""> Favorites</h2>
          <ul class="list-group list-group-flush mt-5 text-start ">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
+         <li class="list-group-item"><a href=""><i class="bi bi-emoji-smile"></i> Premiums  for Εmployees</a></li>
+        <li class="list-group-item"><a href=""><i class="bi bi-cash-coin"></i> Export Your  Payroll Receipt</a></li>
+        <li class="list-group-item"><a href=""><i class="bi bi-piggy-bank"></i> Meet My Supervisor</a></li>
+        <li class="list-group-item"><a href=""><i class="bi bi-newspaper"></i> Newsletter</a></li>
+        <li class="list-group-item"><a href=""><i class="bi bi-files"></i> My Documents</a></li>
         </ul>
          <!-- --------------------------end-right-area--------------------------------- -->
       </div>

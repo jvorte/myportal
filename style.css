@@ -10,7 +10,7 @@ body{
 }
 
 .navbar-brand{
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
@@ -23,7 +23,7 @@ background-position-y: center;
 
 
 label,span,p{
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: normal;
 
@@ -41,7 +41,7 @@ label,span,p{
   
 }
 .front h4 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: normal;
   color: #f1f1f1;
@@ -64,19 +64,22 @@ label,span,p{
   
   }
   nav{
-    font-family: "Poppins", sans-serif;
+    color: rgb(31, 29, 29);
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   }
 
-  .left-panel{
+  .left-panel {
     border-radius: 30px;
     height: 600px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    font-size: 25px;
+    color: rgb(31, 29, 29);
   }
-  .left-panel h3{
-    font-family: "Poppins", sans-serif;
+  .left-panel h2{
+    font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-style: normal;
    
@@ -87,12 +90,34 @@ label,span,p{
     border-radius: 30px;
     height: 600px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    font-size: 25px;
+    color: rgb(31, 29, 29);
+  }
+  .right-panel h2{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+   
+  }
+  .left-panel a , .right-panel a{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    text-decoration: none;
+    color: rgb(31, 29, 29);
+  }
+  .left-panel a:hover , .right-panel a:hover {
+  
+    color: rgb(172, 19, 19);
+  }
+  i{
+    color: red;
   }
 
 
   /* ----------------------end---portal--------------------------------- */
   #icon{
-    height: 33px;
+    width: 35px;
   }
 footer{
     margin-top: auto;
