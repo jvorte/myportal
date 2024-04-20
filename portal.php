@@ -21,7 +21,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
      <!-- Bootstrap Font Icon CSS -->
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
-  </head>
+     <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    </head>
   <body id="bg_portal">
 <!-- ------------------navbar----------------------- -->
 
@@ -101,7 +105,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <!-- ---------------center----------------------- -->
 
-<div class="container pt-4">
+<div class="container pt-4 animate__animated animate__backInDown">
 
         <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
@@ -109,12 +113,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
        </form>
 
 </div>
-<div class="container">
+<div class="container ">
 
 <div class="container px-4 pt-5 text-center">
   <div class="row gx-5">
     <div class="col col-lg-6 pb-3">
-     <div class="left-panel p-3 border bg-light">
+     <div class="left-panel p-3 border bg-light animate__animated animate__backInUp">
   <!-- ---------------------------left-area--------------------------------- -->
     <h2><img src="" alt="" srcset="">Usefull Links</h2>
 
@@ -131,9 +135,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
      <!-- -------------------------end--left-area--------------------------------- -->
     <div class="col-md-6">
-      <div class="right-panel p-3 border bg-light">
+      <div class="right-panel p-3 border bg-light animate__animated animate__backInUp">
          <!-- ---------------------------right-area--------------------------------- -->
-         <h2><img src="" alt="" srcset=""> Favorites</h2>
+         <h2><img src="" alt="" srcset="">Favorites</h2>
          <ul class="list-group list-group-flush mt-5 text-start ">
          <li class="list-group-item"><a href=""><i class="bi bi-emoji-smile"></i> Premiums  for Εmployees</a></li>
         <li class="list-group-item"><a href=""><i class="bi bi-cash-coin"></i> Export Your  Payroll Receipt</a></li>
