@@ -32,7 +32,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
-    <a class="navbar-brand" href="#"><img id="icon" src="icons/3.png" alt="" srcset=""></a>
+    <a class="navbar-brand" href="portal.php"><img id="icon" src="icons/3.png" alt="" srcset=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,7 +40,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="#">Home</a>
+          <a class="nav-link " aria-current="page" href="portal.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -104,57 +104,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <!-- ---------------end---navbar----------------------- -->
 
 <!-- ---------------center----------------------- -->
-
-<div class="container pt-4 animate__animated animate__backInDown">
-
-        <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
-        <button type="submit" class="btn btn-danger"><span class="bi-search"></span> Search</button>
-       </form>
+<div class="container myData">
 
 </div>
-<div class="container ">
-
-<div class="container px-4 pt-5 text-center">
-  <div class="row gx-5">
-    <div class="col col-lg-6 pb-3">
-     <div class="left-panel p-3 border bg-light animate__animated animate__backInUp">
-  <!-- ---------------------------left-area--------------------------------- -->
-    <h2><img src="" alt="" srcset="">Usefull Links</h2>
-
-        <ul class="list-group list-group-flush mt-5 text-start ">
-        <li class="list-group-item"><a href=""><i class="bi bi-files"></i> My Documents</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-paperclip"></i> Insert Certificate Of Your Illness</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-piggy-bank"></i> Meet My Supervisor</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-house-add"></i> Change Your Adress</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-wallet"></i> Career</a></li>
-        </ul>
-
-
-     </div>
-    </div>
-     <!-- -------------------------end--left-area--------------------------------- -->
-    <div class="col-md-6">
-      <div class="right-panel p-3 border bg-light animate__animated animate__backInUp">
-         <!-- ---------------------------right-area--------------------------------- -->
-         <h2><img src="" alt="" srcset="">Favorites</h2>
-         <ul class="list-group list-group-flush mt-5 text-start ">
-         <li class="list-group-item"><a href=""><i class="bi bi-alphabet"></i> Online Lessons</a></li>         
-         <li class="list-group-item"><a href=""><i class="bi bi-luggage"></i> Plan your business trip</a></li>
-         <li class="list-group-item"><a href=""><i class="bi bi-emoji-smile"></i> Premiums  for Εmployees</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-cash-coin"></i> Export Your  Payroll Receipt</a></li>        
-        <li class="list-group-item"><a href=""><i class="bi bi-newspaper"></i> Newsletter</a></li>
-        
-        </ul>
-         <!-- --------------------------end-right-area--------------------------------- -->
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>
-
-
 <!-- ---------------end---center----------------------- -->
    
 
