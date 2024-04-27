@@ -114,7 +114,9 @@ label,span,p{
   i{
     color: red;
   }
-
+.hello a{
+  color: red;
+}
 
   /* ----------------------end---portal--------------------------------- */
     /* -------------------------mydata--------------------------------- */
@@ -122,6 +124,7 @@ label,span,p{
 height: auto;
 background-color: aliceblue;
 border-radius: 8px;
+margin-top: 130px;
 }
 
  /* ----------------------end---mydata--------------------------------- */

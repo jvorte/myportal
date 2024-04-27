@@ -2,12 +2,22 @@
 // Initialize the session
 session_start();
  
-// Check if the user is logged in, if not then redirect him to login page
+// Check if the user is logged in, otherwise redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: index.php");
+    header("location: login.php");
     exit;
 }
+ 
+// Include config file
+require_once "login_system/config.php";
+ 
+
 ?>
+
+<!-- ---------------------------------------------------------------------
+ -->
+
+
 
  
  <!doctype html>
@@ -40,7 +50,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="#">Home</a>
+          <a class="nav-link " aria-current="page" href="myPortal.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -104,57 +114,28 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <!-- ---------------end---navbar----------------------- -->
 
 <!-- ---------------center----------------------- -->
-
-<div class="container pt-4 animate__animated animate__backInDown">
-
-        <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
-        <button type="submit" class="btn btn-danger"><span class="bi-search"></span> Search</button>
-       </form>
-
+<div class="container">
+<div class="mb-3">
+  <label for="formFile" class="form-label">Default file input example</label>
+  <input class="form-control" type="file" id="formFile">
 </div>
-<div class="container ">
-
-<div class="container px-4 pt-5 text-center">
-  <div class="row gx-5">
-    <div class="col col-lg-6 pb-3">
-     <div class="left-panel p-3 border bg-light animate__animated animate__backInUp">
-  <!-- ---------------------------left-area--------------------------------- -->
-    <h2><img src="" alt="" srcset="">Usefull Links</h2>
-
-        <ul class="list-group list-group-flush mt-5 text-start ">
-        <li class="list-group-item"><a href=""><i class="bi bi-files"></i> My Documents</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-paperclip"></i> Insert Certificate Of Your Illness</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-piggy-bank"></i> Meet My Supervisor</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-house-add"></i> Change Your Adress</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-wallet"></i> Career</a></li>
-        </ul>
-
-
-     </div>
-    </div>
-     <!-- -------------------------end--left-area--------------------------------- -->
-    <div class="col-md-6">
-      <div class="right-panel p-3 border bg-light animate__animated animate__backInUp">
-         <!-- ---------------------------right-area--------------------------------- -->
-         <h2><img src="" alt="" srcset="">Favorites</h2>
-         <ul class="list-group list-group-flush mt-5 text-start ">
-         <li class="list-group-item"><a href=""><i class="bi bi-alphabet"></i> Online Lessons</a></li>         
-         <li class="list-group-item"><a href=""><i class="bi bi-luggage"></i> Plan your business trip</a></li>
-         <li class="list-group-item"><a href=""><i class="bi bi-emoji-smile"></i> Premiums  for Εmployees</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-cash-coin"></i> Export Your  Payroll Receipt</a></li>        
-        <li class="list-group-item"><a href=""><i class="bi bi-newspaper"></i> Newsletter</a></li>
-        
-        </ul>
-         <!-- --------------------------end-right-area--------------------------------- -->
-      </div>
-    </div>
-  </div>
+<div class="mb-3">
+  <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+  <input class="form-control" type="file" id="formFileMultiple" multiple>
 </div>
-
+<div class="mb-3">
+  <label for="formFileDisabled" class="form-label">Disabled file input example</label>
+  <input class="form-control" type="file" id="formFileDisabled" disabled>
 </div>
-
-
+<div class="mb-3">
+  <label for="formFileSm" class="form-label">Small file input example</label>
+  <input class="form-control form-control-sm" id="formFileSm" type="file">
+</div>
+<div>
+  <label for="formFileLg" class="form-label">Large file input example</label>
+  <input class="form-control form-control-lg" id="formFileLg" type="file">
+</div>
+</div>
 <!-- ---------------end---center----------------------- -->
    
 
@@ -168,3 +149,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+
+ 
+
+
+
+
+ 
+
+
