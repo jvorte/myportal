@@ -59,13 +59,26 @@ label,span,p{
  .register{
 
     height: auto;
-    background-color: #e6e6e6;
+    background-color: #f7f7f7;
     border-radius: 8px;
     margin-top: 130px;
     font-family: "Poppins", sans-serif;
  }
 
   /* -------------------------end -login system---------------------------------- */
+
+    /* -------------------------changeForm--------------------------------- */
+
+  .changeForm{
+
+    height: auto;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    margin-top: 50px;
+    font-family: "Poppins", sans-serif;
+  }
+
+    /* -------------------------end changeForm---------------------------------- */
   /* -------------------------portal--------------------------------- */
 
   #bg_portal{

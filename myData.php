@@ -146,7 +146,7 @@ unset($pdo);
 
 <div class="container mydata">
 
-<div class="container text-center animate__animated animate__backInUp">
+<div class="container  animate__animated animate__backInUp">
   <div class="row">
     <div class="col-sm-8">
 
@@ -164,7 +164,7 @@ unset($pdo);
       <div class=" fs-5">MyAddress</div>
       <?php echo $address ." ".$city." ".$zip." ".$country?>
     </div> 
-    <span class="badge  rounded-pill"><a href="">Change Address</a></span>
+    <span class="badge  rounded-pill"><a href="changeAddress.php?user_id=<?php echo $id?>">Change Address</a></span>
   </li>
 
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -172,7 +172,7 @@ unset($pdo);
       <div class=" fs-5">Mobile Phone</div>
       <?php echo $mobile?>
     </div> 
-    <span class="badge  rounded-pill"><a href="">Change Mobile Number</a></span>
+    <span class="badge  rounded-pill"><a href="changeMobile.php?user_id=<?php echo $id?>">Change Mobile Number</a></span>
   </li>
 
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -180,7 +180,7 @@ unset($pdo);
       <div class=" fs-5">My Email</div>
       <?php echo $email?>
     </div>
-    <span class="badge  rounded-pill"><a href="">Change Email Address</a></span> 
+    <span class="badge  rounded-pill"><a href="changeEmail.php?user_id=<?php echo $id?>">Change Email Address</a></span> 
   </li>
 
 </ol>

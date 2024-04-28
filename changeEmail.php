@@ -116,7 +116,7 @@ require_once "login_system/config.php";
 <!-- ---------------center----------------------- -->
 
 <div class="container title animate__animated animate__backInUp">
-  <h1 class="mt-5 display-4">Change your Address</h1> 
+  <h1 class="mt-5 display-4">Change your Email</h1> 
 </div>
 
 <div class="container changeForm">
