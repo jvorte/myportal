@@ -1,12 +1,47 @@
 <?php
 // Initialize the session
 session_start();
- 
+
+ // Include config file
+require_once "login_system/config.php";
+
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: index.php");
     exit;
 }
+
+// Attempt select query execution
+try{
+  $sql = "SELECT * FROM users";   
+  $result = $pdo->query($sql);
+  if($result->rowCount() > 0){
+     
+      while($row = $result->fetch()){
+       $id = $row['id'] ;
+       $username = $row['username'];
+       $firstname= $row['firstname'];
+       $lastname = $row['lastname'];
+       $address = $row['address'];
+       $city = $row['city']; 
+       $country = $row['country']; 
+       $zip = $row['zip']; 
+       $mobile = $row['mobile']; 
+       $email =  $row['email'];  
+      
+       }
+
+      // Free result set
+      unset($result);
+  } else{
+      echo "No records matching your query were found.";
+  }
+} catch(PDOException $e){
+  die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+// Close connection
+unset($pdo);
 ?>
 
  
@@ -40,7 +75,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="portal.php">Home</a>
+          <a class="nav-link " aria-current="page" href="myPortal.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -57,7 +92,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
           </ul>
         </li>
    
-       <li class="nav-item">
+       <li class="nav-item hello">
        <a class="nav-link" href="myData.php">
        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
         <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
@@ -104,7 +139,83 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <!-- ---------------end---navbar----------------------- -->
 
 <!-- ---------------center----------------------- -->
-<div class="container myData">
+
+<div class="container title animate__animated animate__backInUp">
+<h1 class="mt-5 display-4">MyData</h1> 
+</div>
+
+<div class="container mydata">
+
+<div class="container text-center animate__animated animate__backInUp">
+  <div class="row">
+    <div class="col-sm-8">
+
+    <ol class="list-group my-5">
+
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class=" fs-5">FullName</div>
+    <?php echo $firstname ." ".$lastname?>
+    </div>
+  </li>
+
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class=" fs-5">MyAddress</div>
+      <?php echo $address ." ".$city." ".$zip." ".$country?>
+    </div> 
+    <span class="badge  rounded-pill"><a href="">Change Address</a></span>
+  </li>
+
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class=" fs-5">Mobile Phone</div>
+      <?php echo $mobile?>
+    </div> 
+    <span class="badge  rounded-pill"><a href="">Change Mobile Number</a></span>
+  </li>
+
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class=" fs-5">My Email</div>
+      <?php echo $email?>
+    </div>
+    <span class="badge  rounded-pill"><a href="">Change Email Address</a></span> 
+  </li>
+
+</ol>
+
+    </div>
+
+    <div class="col-sm-4">
+    <ol class="list-group my-5">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class=" fs-5">Meet My SuperVisor</div>
+     Date:
+    </div>
+    <span class="badge  rounded-pill"><a href="">Cancel Meeting</a></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class=" fs-5">My Vacations</div>
+      from:....until:.....
+    </div>
+    <span class="badge rounded-pill"><a href="">Change Dates</a></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class=" fs-5">Αvailable Vacation Days</div>
+
+    </div>
+    <span class="badge bg-primary rounded-pill">14</span>
+  </li>
+</ol>
+    </div>
+    
+  </div>
+  
+</div>
 
 </div>
 <!-- ---------------end---center----------------------- -->

@@ -60,6 +60,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     // ====================test=======================
+    // Validate confirm name
+    if(empty(trim($_POST["firstname"]))){
+      $firstname_err = "Please confirm firstname.";     
+  } else{
+      $firstname = trim($_POST["firstname"]);
+      
+  }
+      // Validate confirm lastname
+      if(empty(trim($_POST["lastname"]))){
+        $lastname_err = "Please confirm address.";     
+    } else{
+        $lastname = trim($_POST["lastname"]);
+        
+    }
+
      // Validate confirm address
     if(empty(trim($_POST["address"]))){
         $confirm_address_err = "Please confirm address.";     
@@ -113,13 +128,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password , address, city, country, zip, mobile, email) VALUES (:username, :password, :address, :city, :country, :zip, :mobile, :email)";
+        $sql = "INSERT INTO users (username, password ,firstname, lastname, address, city, country, zip, mobile, email) VALUES (:username, :password, :firstname, :lastname, :address, :city, :country, :zip, :mobile, :email)";
          
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
-
+            $stmt->bindParam(":firstname", $param_firstname, PDO::PARAM_STR);
+            $stmt->bindParam(":lastname", $param_lastname, PDO::PARAM_STR);
             $stmt->bindParam(":address", $param_address, PDO::PARAM_STR);
             $stmt->bindParam(":city", $param_city, PDO::PARAM_STR);
             $stmt->bindParam(":country", $param_country, PDO::PARAM_STR);
@@ -131,6 +147,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Set parameters
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            $param_firstname = $firstname;
+            $param_lastname = $lastname;
             $param_address = $address;
             $param_city = $city;
             $param_country = $country;
@@ -180,7 +198,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container">
-    <a class="navbar-brand" href="portal.php"><img id="icon" src="../icons/3.png" alt="" srcset=""></a>
+    <a class="navbar-brand" href="myPortal.php"><img id="icon" src="../icons/3.png" alt="" srcset=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -188,7 +206,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <li class="nav-item">
-          <a class="nav-link " aria-current="page" href="../portal.php">Home</a>
+          <a class="nav-link " aria-current="page" href="../myPortal.php">Home</a>
         </li>
 
       </ul>
@@ -206,7 +224,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!-- ---------------end---navbar----------------------- -->
 
 <!-- ---------------center----------------------- -->
-<div class="container myData">
+<div class="container register">
 <h2>Registration Form</h1>
 <p>please enter your data</p>
 
@@ -225,6 +243,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <label>Confirm Password</label>
     <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
     <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+  </div>
+
+  <div class="col-md-3">
+  <label>FirstName</label>
+    <input type="text" name="firstname" class="form-control <?php echo (!empty($firstname_err)) ? 'is-invalid' : ''; ?>" value="">
+    <span class="invalid-feedback"><?php echo $firstname_err; ?></span>
+  </div>
+
+  <div class="col-md-3">
+  <label>LastName</label>
+    <input type="text" name="lastname" class="form-control <?php echo (!empty($lastname_err)) ? 'is-invalid' : ''; ?>" value="">
+    <span class="invalid-feedback"><?php echo $lastname_err; ?></span>
   </div>
 
   <div class="col-12">

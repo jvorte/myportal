@@ -6,7 +6,7 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .navbar-brand{
@@ -55,6 +55,17 @@ label,span,p{
   text-shadow: 2px  2px #000000;
   }
  /* -------------------------end index--------------------------------- */
+ /* -------------------------login system--------------------------------- */
+ .register{
+
+    height: auto;
+    background-color: #e6e6e6;
+    border-radius: 8px;
+    margin-top: 130px;
+    font-family: "Poppins", sans-serif;
+ }
+
+  /* -------------------------end -login system---------------------------------- */
   /* -------------------------portal--------------------------------- */
 
   #bg_portal{
@@ -64,7 +75,7 @@ label,span,p{
   
   }
   nav{
-    color: rgb(31, 29, 29);
+    color: rgb(34, 33, 36);
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -73,10 +84,11 @@ label,span,p{
 
   .left-panel {
     border-radius: 30px;
-    height: 600px;
+    height: 500px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    font-size: 25px;
+    font-size: 18px;
     color: rgb(31, 29, 29);
+    background-color: #FFFFFF;
   }
   .left-panel h2{
     font-family: "Roboto", sans-serif;
@@ -89,10 +101,11 @@ label,span,p{
   
   .right-panel{
     border-radius: 30px;
-    height: 600px;
+    height: 500px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    font-size: 25px;
+    font-size: 18px;
     color: rgb(31, 29, 29);
+    background-color: #FFFFFF;
   }
   .right-panel h2{
     font-family: "Roboto", sans-serif;
@@ -109,22 +122,34 @@ label,span,p{
   }
   .left-panel a:hover , .right-panel a:hover {
   
-    color: rgb(172, 19, 19);
+    color: rgb(119, 15, 15);
   }
   i{
     color: red;
   }
 .hello a{
-  color: red;
+  color: rgb(34, 33, 36);
 }
 
   /* ----------------------end---portal--------------------------------- */
+  .title{
+    font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 3em 0 0 0;
+  color: #f1f1f1;
+  text-shadow: 2px  2px #000000;
+  }
     /* -------------------------mydata--------------------------------- */
-.myData{
+.mydata{
 height: auto;
-background-color: aliceblue;
 border-radius: 8px;
-margin-top: 130px;
+font-family: "Roboto", sans-serif;
+font-weight: 300;
+font-style: normal;
+}
+.mydata span{
+font-size: 15px;
 }
 
  /* ----------------------end---mydata--------------------------------- */

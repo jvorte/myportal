@@ -105,20 +105,23 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <!-- ---------------center----------------------- -->
 
-<div class="container pt-4 animate__animated animate__backInDown">
+<!-- <div class="container pt-4 animate__animated animate__backInDown">
 
         <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
         <button type="submit" class="btn btn-danger"><span class="bi-search"></span> Search</button>
        </form>
 
+</div> -->
+<div class="container title animate__animated animate__backInUp">
+<h1 class="mt-5 display-4">MyPortal</h1> 
 </div>
 <div class="container ">
 
 <div class="container px-4 pt-5 text-center">
   <div class="row gx-5">
     <div class="col col-lg-6 pb-3">
-     <div class="left-panel p-3 border bg-light animate__animated animate__backInUp">
+     <div class="left-panel p-3 border  animate__animated animate__backInUp">
   <!-- ---------------------------left-area--------------------------------- -->
     <h2><img src="" alt="" srcset="">Usefull Links</h2>
 
@@ -135,7 +138,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
      <!-- -------------------------end--left-area--------------------------------- -->
     <div class="col-md-6">
-      <div class="right-panel p-3 border bg-light animate__animated animate__backInUp">
+      <div class="right-panel p-3 border animate__animated animate__backInUp">
          <!-- ---------------------------right-area--------------------------------- -->
          <h2><img src="" alt="" srcset="">Favorites</h2>
          <ul class="list-group list-group-flush mt-5 text-start ">
