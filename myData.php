@@ -40,7 +40,139 @@ try{
   die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
 
+
+// --------------------------------1.Modal--address------------------------------------------------
+       // Define variables and initialize with empty values
+            
+       $confirm_address_err = $confirm_city_err =$confirm_country_err = $confirm_zip_err = "";
+
+
+       if (isset($_POST['submit1']))
+       {
+   // Validate confirm address
+   if(empty(trim($_POST["address"]))){
+     $confirm_address_err = "Please confirm address.";     
+ } else{
+     $address = trim($_POST["address"]);
+     
+ }
+ 
+     // Validate confirm city
+     if(empty(trim($_POST["city"]))){
+         $confirm_city_err = "Please confirm city.";     
+     } else{
+         $city = trim($_POST["city"]);
+       
+     }
+
+       // Validate confirm country
+       if(empty(trim($_POST["country"]))){
+         $confirm_country_err = "Please confirm country.";     
+     } else{
+         $country = trim($_POST["country"]);
+       
+     }
+
+       // Validate confirm zip
+       if(empty(trim($_POST["zip"]))){
+         $confirm_zip_err = "Please confirm zip.";     
+     } else{
+         $zip = trim($_POST["zip"]);
+       
+     }
+
+     $sql = "UPDATE users SET address='$address', city='$city', country='$country', zip='$zip' WHERE id='$id'";    
+      $pdo->exec($sql);
+
+
+     }
+// -----------------------------End---1.Modal-----address---------------------------------------------
+
+
+
+// --------------------------------2.Modal--mobile------------------------------------------------
+       // Define variables and initialize with empty values
+            
+       $confirm_mobile_err = "";
+
+
+       if (isset($_POST['submit2']))
+              { // Validate confirm mobile
+          if(empty(trim($_POST["mobile"]))){
+            $confirm_mobile_err = "Please confirm mobile.";     
+        } else{
+            $mobile = trim($_POST["mobile"]);  
+        }
+        $sql = "UPDATE users SET mobile='$mobile' WHERE id='$id'";    
+        $pdo->exec($sql);
+  
+       }
+// --------------------------------2.End Modal--mobile------------------------------------------------
+
+
+
+
+// --------------------------------3.Modal--Email------------------------------------------------
+       // Define variables and initialize with empty values
+            
+       $confirm_email_err = "";
+
+
+       if (isset($_POST['submit3']))
+              { // Validate confirm mobile
+          if(empty(trim($_POST["email"]))){
+            $confirm_email_err = "Please confirm email.";     
+        } else{
+            $email = trim($_POST["email"]);  
+        }
+        $sql = "UPDATE users SET email='$email' WHERE id='$id'";    
+        $pdo->exec($sql);
+  
+       }
+// --------------------------------3.End Modal--Email------------------------------------------------
+
+
+// --------------------------------4.Modal--Meeting------------------------------------------------
+       // Define variables and initialize with empty values
+            
+       $confirm_email_err = "";
+
+
+       if (isset($_POST['submit4']))
+              { // Validate confirm mobile
+          if(empty(trim($_POST["email"]))){
+            $confirm_email_err = "Please confirm email.";     
+        } else{
+            $email = trim($_POST["email"]);  
+        }
+        $sql = "UPDATE users SET email='$email' WHERE id='$id'";    
+        $pdo->exec($sql);
+  
+       }
+// --------------------------------4.End Modal--Meeting------------------------------------------------
+
+
+// --------------------------------5.Modal--Vacations------------------------------------------------
+       // Define variables and initialize with empty values
+            
+       $confirm_email_err = "";
+
+
+       if (isset($_POST['submit5']))
+              { // Validate confirm mobile
+          if(empty(trim($_POST["email"]))){
+            $confirm_email_err = "Please confirm email.";     
+        } else{
+            $email = trim($_POST["email"]);  
+        }
+        $sql = "UPDATE users SET email='$email' WHERE id='$id'";    
+        $pdo->exec($sql);
+  
+       }
+// --------------------------------5.End Modal--Vacations------------------------------------------------
+
 // Close connection
+
 unset($pdo);
 ?>
 
@@ -58,9 +190,9 @@ unset($pdo);
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
      <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-    </head>
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+
   <body id="bg_portal">
 <!-- ------------------navbar----------------------- -->
 
@@ -164,7 +296,12 @@ unset($pdo);
       <div class=" fs-5">MyAddress</div>
       <?php echo $address ." ".$city." ".$zip." ".$country?>
     </div> 
-    <span class="badge  rounded-pill"><a href="changeAddress.php?user_id=<?php echo $id?>">Change Address</a></span>
+    <!-- <span class="badge  rounded-pill"><a href="changeAddress.php?user_id=<?php echo $id?>">Change Address</a></span> -->
+    <span class="badge  rounded-pill">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+      Change Address
+      </button>
+    </span>
   </li>
 
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -172,7 +309,12 @@ unset($pdo);
       <div class=" fs-5">Mobile Phone</div>
       <?php echo $mobile?>
     </div> 
-    <span class="badge  rounded-pill"><a href="changeMobile.php?user_id=<?php echo $id?>">Change Mobile Number</a></span>
+    <!-- <span class="badge  rounded-pill"><a href="changeMobile.php?user_id=<?php echo $id?>">Change Mobile Number</a></span> -->
+    <span class="badge  rounded-pill">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+      Change Mobile Number
+      </button>
+    </span>
   </li>
 
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -180,13 +322,18 @@ unset($pdo);
       <div class=" fs-5">My Email</div>
       <?php echo $email?>
     </div>
-    <span class="badge  rounded-pill"><a href="changeEmail.php?user_id=<?php echo $id?>">Change Email Address</a></span> 
+    <!-- <span class="badge  rounded-pill"><a href="changeEmail.php?user_id=<?php echo $id?>">Change Email Address</a></span>  -->
+    <span class="badge  rounded-pill">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+      Change Email Address
+      </button>
+    </span>
   </li>
 
 </ol>
 
     </div>
-
+   
     <div class="col-sm-4">
     <ol class="list-group my-5">
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -194,14 +341,24 @@ unset($pdo);
       <div class=" fs-5">Meet My SuperVisor</div>
      Date:
     </div>
-    <span class="badge  rounded-pill"><a href="">Cancel Meeting</a></span>
+    <!-- <span class="badge  rounded-pill"><a href="">Cancel Meeting</a></span> -->
+    <span class="badge  rounded-pill">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4">
+      My Meeting
+      </button>
+    </span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class=" fs-5">My Vacations</div>
       from:....until:.....
     </div>
-    <span class="badge rounded-pill"><a href="">Change Dates</a></span>
+    <!-- <span class="badge rounded-pill"><a href="">Change Dates</a></span> -->
+    <span class="badge  rounded-pill">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal5">
+      My Vacations
+      </button>
+    </span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
@@ -219,8 +376,232 @@ unset($pdo);
 
 </div>
 <!-- ---------------end---center----------------------- -->
-   
 
+
+                                   <!-- Modals -->
+
+<!-- Modal  1.Change Address-->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Change your Address</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- ---------------------------------------- -->
+            <div class="row g-3">
+            <div class="col-sm-12">
+            <label for="inputEmail4" class="form-label">Current Address</label>
+              <input type="text" class="form-control" placeholder="<?php echo $address ." ".$city." ".$zip." ".$country?>" aria-label="City" disabled>
+            </div>
+
+            
+      <form action="" method="post">
+        
+            <div class="modal-header">
+            <label for="inputEmail4" class="form-label">New Address</label>
+           </div>
+           <div class="col-12">
+              <label for="inputAddress" class="form-label">Address</label>
+              <input type="text" name="address" class="form-control <?php echo (!empty($confirm_address_err)) ? 'is-invalid' : ''; ?>"  id="inputAddress" placeholder="">
+              <span class="invalid-feedback"><?php echo $confirm_address_err; ?></span> 
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" name="city"  class="form-control<?php echo (!empty($confirm_city_err)) ? 'is-invalid' : ''; ?>" value="" id="inputCity">
+            <span class="invalid-feedback"><?php echo $confirm_city_err; ?></span>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputState" class="form-label">Country</label>
+            <select id="inputState" name="country"  class="form-select <?php echo (!empty($confirm_country_err)) ? 'is-invalid' : ''; ?>" value="">
+            <span class="invalid-feedback"><?php echo $confirm_country_err; ?></span>
+              <option selected>Choose...</option>
+              <option>Austria</option>
+              <option>Deutchland</option>
+            </select>
+          </div>
+
+          <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" name="zip"  class="form-control <?php echo (!empty($confirm_zip)) ? 'is-invalid' : ''; ?>" value="" id="inputZip">
+            <span class="invalid-feedback"><?php echo $confirm_zip_err; ?></span>
+          </div>
+
+
+          </div>
+           <!-- ---------------------------------------- -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" name="submit1" class="btn btn-primary">Save changes</button>
+      </div>
+ </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- end Modal  1.Change Address-->
+
+
+<!-- Modal  2.Change Mobile Number-->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Mobile Number</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+              <!-- ---------------------------------------- -->
+              <div class="row g-3">
+            <div class="col-sm-6">
+            <label for="inputEmail4" class="form-label">Current Mobile Number</label>
+              <input type="text" class="form-control" placeholder="<?php echo $mobile?>" aria-label="City" disabled>
+            </div>
+
+            <form action="" method="post">
+            <div class="col-md-6">
+              <label for="inputCity" class="form-label">New Mobile Number</label>
+              <input type="text" name="mobile"  class="form-control<?php echo (!empty($confirm_mobile_err)) ? 'is-invalid' : ''; ?>" value="" id="inputCity">
+              <span class="invalid-feedback"><?php echo $confirm_mobile_err; ?></span>
+            </div>
+
+          </div>
+           <!-- ---------------------------------------- -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" name="submit2"  class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+   
+<!-- end Modal  2.Change Mobile Number-->
+
+<!-- Modal  3.Change Email Address-->
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Email Address</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+               <!-- ---------------------------------------- -->
+               <div class="row g-3">
+            <div class="col-sm-12">
+            <label for="inputEmail4" class="form-label">Current Email Address</label>
+              <input type="text" class="form-control" placeholder="<?php echo $email?>" aria-label="City" disabled>
+            </div>
+       
+            <form action="" method="post">
+            <div class="col-md-12">
+              <label for="inputCity" class="form-label">New Email Address</label>
+              <input type="Email" name="email"  class="form-control<?php echo (!empty($confirm_email_err)) ? 'is-invalid' : ''; ?>" value="" id="inputCity">
+              <span class="invalid-feedback"><?php echo $confirm_email_err; ?></span>
+            </div>
+
+          </div>
+           <!-- ---------------------------------------- -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit"  name="submit3"  class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+   
+<!-- end Modal  3.Change Email Address-->
+
+<!-- Modal  4. Meeting-->
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">My Meeting</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+             <!-- ---------------------------------------- -->
+             <div class="row g-3">
+
+            <div class="col-sm-12">
+            <label for="inputEmail4" class="form-label">Wish Date</label>
+            <form action="" method="$_POST">         
+            <input type="date" class="form-control" name="date">
+            <input type="time" class="form-control my-3"  name="time">
+          
+          </form>
+            </div>
+
+            <!-- <div class="col-sm">
+            <label for="inputEmail4" class="form-label">Cancel Meeting</label>
+              <input type="text" class="form-control" placeholder="State" aria-label="State">
+            </div> -->
+
+          </div>
+           <!-- ---------------------------------------- -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+<!-- end Modal  4.  Meeting-->
+
+
+<!-- Modal  5.Vacation Dates-->
+<div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Dates</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- ---------------------------------------- -->
+        <div class="row g-3">
+            <div class="col-sm-12">
+            <label for="inputEmail4" class="form-label">Current Address</label>
+            <form action="/action_page.php">
+  <label for="birthday">:</label>
+  <input type="date" id="birthday" name="">
+   <input type="time" id="appt" name="appt">
+  <input type="submit">
+</form>
+
+            </div>
+            <div class="col-sm">
+            <label for="inputEmail4" class="form-label">New Address</label>
+              <input type="text" class="form-control" placeholder="State" aria-label="State">
+            </div>
+
+          </div>
+           <!-- ---------------------------------------- -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+   
+<!-- end Modal  5.Change Dates-->
+
+
+                                  <!-- end Modals -->
 
     <footer class="footer">
   <h6 class="text-center  fs-6 bg-dark text-light">D.Vortelinas Copyright<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">

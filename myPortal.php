@@ -129,7 +129,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <li class="list-group-item"><a href="myDocuments.php"><i class="bi bi-files"></i> My Documents</a></li>
         <li class="list-group-item"><a href="insertCertificate.php"><i class="bi bi-paperclip"></i> Insert Certificate Of Your Illness</a></li>
         <li class="list-group-item"><a href="meetSv.php"><i class="bi bi-piggy-bank"></i> Meet My Supervisor</a></li>
-        <li class="list-group-item"><a href="changeAddress.php"><i class="bi bi-house-add"></i> Change Your Adress</a></li>
+        <li class="list-group-item"><a href="changeAddress.php"><i class="bi bi-house-add"></i> Change Your Address</a></li>
         <li class="list-group-item"><a href="insertMyVacations.php"><i class="bi bi-wallet"></i> Insert My Vacations</a></li>
         </ul>
 

@@ -141,7 +141,7 @@ label,span,p{
     color: red;
   }
 .hello a{
-  color: rgb(34, 33, 36);
+  color: rgb(74, 63, 100);
 }
 
   /* ----------------------end---portal--------------------------------- */
@@ -163,6 +163,9 @@ font-style: normal;
 }
 .mydata span{
 font-size: 15px;
+}
+.modal-content{
+  font-family: "Roboto", sans-serif;
 }
 
  /* ----------------------end---mydata--------------------------------- */

@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $confirm_password_err = "Password did not match.";
         }
     }
-    // ====================test=======================
+    // ====================Data=======================
     // Validate confirm name
     if(empty(trim($_POST["firstname"]))){
       $firstname_err = "Please confirm firstname.";     
@@ -122,7 +122,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
 
-       // ==================e test=========================
+       // ==================e data=========================
     
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
