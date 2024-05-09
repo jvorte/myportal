@@ -197,7 +197,7 @@ try{
           $time = trim($_POST["time"]);  
       }
          
-        $sql = "INSERT INTO  meeting   (id_user , date, time ) VALUES ('$id','$date', '$time')";   
+        $sql = "INSERT INTO  meeting   (user_id , date, time ) VALUES ('$id','$date', '$time')";   
         $pdo->exec($sql);
   
        }
@@ -223,7 +223,7 @@ try{
         $until = trim($_POST["until"]);  
     }
        
-      $sql = "INSERT INTO  vacations   (id_user , from_date, until_date ) VALUES ('$id','$from', '$until')";   
+      $sql = "INSERT INTO  vacations   (user_id , from_date, until_date ) VALUES ('$id','$from', '$until')";   
       $pdo->exec($sql);
 
      }
@@ -398,8 +398,8 @@ unset($pdo);
     <div class="ms-2 me-auto">
       <div class=" fs-5">Meet My SuperVisor</div>
  
-     <div class=" fs-6">Date:<?php echo (isset($date ))?( $date) : ( " --"); ?></div>
-     <div class=" fs-6">Time:<?php echo (isset($time ))?( $time) : ( " --"); ?></div>
+     <div class=" fs-6">Date : <?php echo (isset($date ))?( $date) : ( " --"); ?></div>
+     <div class=" fs-6">Time : <?php echo (isset($time ))?( $time) : ( " --"); ?></div>
     </div>
     <!-- <span class="badge  rounded-pill"><a href="">Cancel Meeting</a></span> -->
     <span class="badge  rounded-pill">
@@ -411,8 +411,8 @@ unset($pdo);
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class=" fs-5">My Vacations</div>
-      <div class=" fs-6">from:<?php echo (isset($from ))?( $from) : ( " --"); ?></div>
-      <div class=" fs-6">until:<?php echo (isset($until ))?( $until) : ( " --"); ?></div>
+      <div class=" fs-6">From : <?php echo (isset($from ))?( $from) : ( " --"); ?></div>
+      <div class=" fs-6">Until : <?php echo (isset($until ))?( $until) : ( " --"); ?></div>
     
     </div>
     <!-- <span class="badge rounded-pill"><a href="">Change Dates</a></span> -->
