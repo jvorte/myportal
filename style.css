@@ -164,11 +164,15 @@ font-style: normal;
 .mydata span{
 font-size: 15px;
 }
-.modal-content{
+.modal-content , .card{
   font-family: "Roboto", sans-serif;
 }
 
  /* ----------------------end---mydata--------------------------------- */
+
+ .card img{
+  width: 120px;
+ }
     /* ----------------------footer--------------------------------- */
   #icon{
     width: 35px;

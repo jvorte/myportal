@@ -10,9 +10,34 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
  
 // Include config file
 require_once "login_system/config.php";
- 
+
+
+// Upload File  My Documents Check if the form was submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    // Check if file was uploaded without errors
+    if(isset($_FILES["file"]) && $_FILES["file"]["error"] == 0){
+   
+        $filename = $_FILES["file"]["name"];
+    
+        // Verify file extension
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+    
+     
+            if(file_exists("upload_cert/" . $filename)){
+                echo $filename . " is already exists.";
+            } else{
+                move_uploaded_file($_FILES["file"]["tmp_name"], "upload_cert/" . $filename);
+                echo "Your file was uploaded successfully.";
+            } 
+          }
+}
+
 
 ?>
+ 
+
+
 
 <!-- ---------------------------------------------------------------------
  -->
@@ -114,27 +139,56 @@ require_once "login_system/config.php";
 <!-- ---------------end---navbar----------------------- -->
 
 <!-- ---------------center----------------------- -->
+<div class="container title animate__animated animate__backInUp">
+<h1 class="mt-5 display-4">Certificates Of Your Illness</h1> 
+</div>
+
+
+<!-- Button trigger modal -->
 <div class="container">
-<div class="mb-3">
-  <label for="formFile" class="form-label">Default file input example</label>
-  <input class="form-control" type="file" id="formFile">
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Upload file
+</button>
+
 </div>
-<div class="mb-3">
-  <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-  <input class="form-control" type="file" id="formFileMultiple" multiple>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Upload File</h1>        
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="" method="post" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Select file</label>
+        <input class="form-control" type="file" name="file" id="formFile">  
+      </div>
+      </div>
+      <div class="modal-footer">
+  
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" name="submit" class= "btn btn-primary">Upload</button>
+      </div>
+      </form>
+    </div>
+  </div>
 </div>
-<div class="mb-3">
-  <label for="formFileDisabled" class="form-label">Disabled file input example</label>
-  <input class="form-control" type="file" id="formFileDisabled" disabled>
+
+
+
+<div class="container">
+
+<div class="card mt-5 shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 10rem;">
+  <img src="icons/folder.png" class="card-img-top " alt="...">
+  <div class="card-body">   
+    <a class="card-text " href="">Some quick</a>
+  </div>
 </div>
-<div class="mb-3">
-  <label for="formFileSm" class="form-label">Small file input example</label>
-  <input class="form-control form-control-sm" id="formFileSm" type="file">
-</div>
-<div>
-  <label for="formFileLg" class="form-label">Large file input example</label>
-  <input class="form-control form-control-lg" id="formFileLg" type="file">
-</div>
+
 </div>
 <!-- ---------------end---center----------------------- -->
    

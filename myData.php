@@ -11,9 +11,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 
-// Attempt select query execution
+// Attempt select query execution (myData-user data)
+$id=$_SESSION['id'];
 try{
-  $sql = "SELECT * FROM users";   
+
+  $sql = "SELECT * FROM users WHERE id = $id ";  
   $result = $pdo->query($sql);
   if($result->rowCount() > 0){
      
@@ -41,6 +43,50 @@ try{
 }
 
 
+
+// Attempt select query execution (myData-user meeting)
+$id=$_SESSION['id'];
+try{
+
+  $sql = "SELECT * FROM meeting WHERE user_id = $id ";  
+  $result = $pdo->query($sql);
+  if($result->rowCount() > 0){
+     
+      while($row = $result->fetch()){
+       $date = $row['date'] ;
+       $time = $row['time'];      
+      
+       }
+
+      // Free result set
+      unset($result);
+  } 
+
+} catch(PDOException $e){
+  die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+
+// Attempt select query execution (myData-user vacations)
+$id=$_SESSION['id'];
+try{
+
+  $sql = "SELECT * FROM vacations WHERE user_id = $id ";  
+  $result = $pdo->query($sql);
+  if($result->rowCount() > 0){
+     
+      while($row = $result->fetch()){
+       $from = $row['from_date'] ;
+       $until = $row['until_date'];      
+      
+       }
+
+      // Free result set
+      unset($result);
+  } 
+} catch(PDOException $e){
+  die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
 // --------------------------------1.Modal--address------------------------------------------------
        // Define variables and initialize with empty values
             
@@ -135,17 +181,23 @@ try{
 // --------------------------------4.Modal--Meeting------------------------------------------------
        // Define variables and initialize with empty values
             
-       $confirm_email_err = "";
+       $confirm_date_err = $confirm_time_err = "";
 
 
        if (isset($_POST['submit4']))
               { // Validate confirm mobile
-          if(empty(trim($_POST["email"]))){
-            $confirm_email_err = "Please confirm email.";     
+          if(empty(trim($_POST["date"]))){
+            $confirm_date_err = "Please confirm date.";     
         } else{
-            $email = trim($_POST["email"]);  
+            $date = trim($_POST["date"]);  
         }
-        $sql = "UPDATE users SET email='$email' WHERE id='$id'";    
+        if(empty(trim($_POST["time"]))){
+          $confirm_time_err = "Please confirm time.";     
+      } else{
+          $time = trim($_POST["time"]);  
+      }
+         
+        $sql = "INSERT INTO  meeting   (id_user , date, time ) VALUES ('$id','$date', '$time')";   
         $pdo->exec($sql);
   
        }
@@ -155,20 +207,26 @@ try{
 // --------------------------------5.Modal--Vacations------------------------------------------------
        // Define variables and initialize with empty values
             
-       $confirm_email_err = "";
+       $confirm_from_err = $confirm_until_err = "";
 
 
        if (isset($_POST['submit5']))
-              { // Validate confirm mobile
-          if(empty(trim($_POST["email"]))){
-            $confirm_email_err = "Please confirm email.";     
-        } else{
-            $email = trim($_POST["email"]);  
-        }
-        $sql = "UPDATE users SET email='$email' WHERE id='$id'";    
-        $pdo->exec($sql);
-  
-       }
+       { // Validate confirm mobile
+        if(empty(trim($_POST["from"]))){
+          $confirm_from_err = "Please confirm from date.";     
+      } else{
+          $from = trim($_POST["from"]);  
+      }
+      if(empty(trim($_POST["until"]))){
+        $confirm_until_err = "Please confirm until time.";     
+    } else{
+        $until = trim($_POST["until"]);  
+    }
+       
+      $sql = "INSERT INTO  vacations   (id_user , from_date, until_date ) VALUES ('$id','$from', '$until')";   
+      $pdo->exec($sql);
+
+     }
 // --------------------------------5.End Modal--Vacations------------------------------------------------
 
 // Close connection
@@ -256,7 +314,7 @@ unset($pdo);
         <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"/>
         <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
         </svg>
-          <?php echo date("l jS \of F Y h:i:s A")?></a>  
+          <?php echo date("l jS \of F Y h:i:s A") ;?></a>  
         </li>
     
       </ul>
@@ -339,7 +397,9 @@ unset($pdo);
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class=" fs-5">Meet My SuperVisor</div>
-     Date:
+ 
+     <div class=" fs-6">Date:<?php echo (isset($date ))?( $date) : ( " --"); ?></div>
+     <div class=" fs-6">Time:<?php echo (isset($time ))?( $time) : ( " --"); ?></div>
     </div>
     <!-- <span class="badge  rounded-pill"><a href="">Cancel Meeting</a></span> -->
     <span class="badge  rounded-pill">
@@ -351,7 +411,9 @@ unset($pdo);
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class=" fs-5">My Vacations</div>
-      from:....until:.....
+      <div class=" fs-6">from:<?php echo (isset($from ))?( $from) : ( " --"); ?></div>
+      <div class=" fs-6">until:<?php echo (isset($until ))?( $until) : ( " --"); ?></div>
+    
     </div>
     <!-- <span class="badge rounded-pill"><a href="">Change Dates</a></span> -->
     <span class="badge  rounded-pill">
@@ -533,26 +595,22 @@ unset($pdo);
              <!-- ---------------------------------------- -->
              <div class="row g-3">
 
-            <div class="col-sm-12">
+            <div class="col-sm-6">
             <label for="inputEmail4" class="form-label">Wish Date</label>
-            <form action="" method="$_POST">         
-            <input type="date" class="form-control" name="date">
-            <input type="time" class="form-control my-3"  name="time">
-          
+            <form action="" method="POST">         
+            <input type="date" class="form-control<?php echo (!empty($confirm_date_err)) ? 'is-invalid' : ''; ?>" name="date">
+            <span class="invalid-feedback"><?php echo $date_err; ?></span>
+            <input type="time" class="form-control my-3 <?php echo (!empty($confirm_time_err)) ? 'is-invalid' : ''; ?>"  name="time">
+            <span class="invalid-feedback"><?php echo $time_err; ?></span>
+            <button type="submit" name="submit4" class="btn btn-primary">Save changes</button>
           </form>
             </div>
-
-            <!-- <div class="col-sm">
-            <label for="inputEmail4" class="form-label">Cancel Meeting</label>
-              <input type="text" class="form-control" placeholder="State" aria-label="State">
-            </div> -->
-
           </div>
            <!-- ---------------------------------------- -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+       
       </div>
     </div>
   </div>
@@ -566,34 +624,32 @@ unset($pdo);
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Dates</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">My Vacations</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <!-- ---------------------------------------- -->
         <div class="row g-3">
             <div class="col-sm-12">
-            <label for="inputEmail4" class="form-label">Current Address</label>
-            <form action="/action_page.php">
-  <label for="birthday">:</label>
-  <input type="date" id="birthday" name="">
-   <input type="time" id="appt" name="appt">
-  <input type="submit">
-</form>
+            <label for="inputEmail4" class="form-label"></label>
+                <form action="" method="POST">
+                  <label for="birthday">From:</label>
+                  <input type="date" id="vocation" name="from" class="form-control my-3 <?php echo (!empty($confirm_from_err)) ? 'is-invalid' : ''; ?>" > 
+                  <span class="invalid-feedback"><?php echo $from_err; ?></span>
+                  <label for="birthday">Until:</label>
+                  <input type="date" id="vacations" name="until" class="form-control my-3 <?php echo (!empty($confirm_until_err)) ? 'is-invalid' : ''; ?>" >                 
+                  <span class="invalid-feedback"><?php echo $until_err; ?></span>
+      
 
-            </div>
-            <div class="col-sm">
-            <label for="inputEmail4" class="form-label">New Address</label>
-              <input type="text" class="form-control" placeholder="State" aria-label="State">
-            </div>
-
+            </div>   
           </div>
            <!-- ---------------------------------------- -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" name="submit5"  class="btn btn-primary">Save changes</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
