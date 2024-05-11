@@ -241,7 +241,7 @@ try{
       { 
          // Attempt update query execution
          try{
-           $sql = "DELETE FROM vacations WHERE user_id ='$id'";  
+           $sql = "DELETE FROM vacations WHERE user_id ='$id' AND id ='$vacation_id'";  
            $pdo->exec($sql);
            // echo "Records were deleted successfully.";
          } catch(PDOException $e){
@@ -255,6 +255,7 @@ try{
 
       //End delete Vacations
 // --------------------------------5.End Modal--Vacations------------------------------------------------
+
 ?>
 
  
@@ -452,18 +453,23 @@ try{
   if($result->rowCount() > 0){
      
       while($row = $result->fetch()){
+       $vacation_id = $row['id'] ;
        $from = $row['from_date'] ;
        $until = $row['until_date']; ?>
-       <div class=" fs-6">from:<?php echo (isset($from ))?( $from) : ( " --"); ?></div>
-       <div class=" fs-6">until:<?php echo (isset($until ))?( $until)." <button type='button' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' 
-      class='btn btn-link' data-bs-toggle='modal' data-bs-target='#staticBackdrop2'>Delete</button>" : ( " --"); ?>
+       <div class=" fs-6" >from: <?php echo $from?></div>
+       <div class=" fs-6">until: <?php echo $until ?> <button type='button' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' 
+      class='btn btn-link' data-bs-toggle='modal' data-bs-target='#staticBackdrop2'>Delete</button>
       </div>     
   <?php
        }
-
+     
+    
       // Free result set
       unset($result);
   } 
+  else{
+       echo $empty = "empty"; 
+  }
 } catch(PDOException $e){
   die("ERROR: Could not able to execute $sql. " . $e->getMessage());
 }
@@ -473,7 +479,7 @@ try{
 
 ?>
 
-     
+<!-- <?php echo $vacation_id?>   -->
     
     </div>
     <!-- <span class="badge rounded-pill"><a href="">Change Dates</a></span> -->
