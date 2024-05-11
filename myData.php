@@ -421,12 +421,17 @@ try{
     <div class="ms-2 me-auto">
       <div class=" fs-5">Meet My SuperVisor</div>
  
+<<<<<<< HEAD
      <div class=" fs-6">Date:<?php echo (isset($date ))?( $date) : ( " --"); ?></div>
    
      <div class=" fs-6">Time:<?php echo (isset($time ))?( $time)." <button type='button' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' 
      class='btn btn-link' data-bs-toggle='modal' data-bs-target='#staticBackdrop1'>Delete</button>" : ( " --"); ?>
      </div>
       
+=======
+     <div class=" fs-6">Date : <?php echo (isset($date ))?( $date) : ( " --"); ?></div>
+     <div class=" fs-6">Time : <?php echo (isset($time ))?( $time) : ( " --"); ?></div>
+>>>>>>> 5605696df9885070249315568eee639f77a41979
     </div>
  
     <!-- <span class="badge  rounded-pill"><a href="">Cancel Meeting</a></span> -->
@@ -442,6 +447,7 @@ try{
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class=" fs-5">My Vacations</div>
+<<<<<<< HEAD
 <?php 
 // Attempt select query execution (myData-user vacations)
 $id=$_SESSION['id'];
@@ -474,6 +480,10 @@ try{
 ?>
 
      
+=======
+      <div class=" fs-6">From : <?php echo (isset($from ))?( $from) : ( " --"); ?></div>
+      <div class=" fs-6">Until : <?php echo (isset($until ))?( $until) : ( " --"); ?></div>
+>>>>>>> 5605696df9885070249315568eee639f77a41979
     
     </div>
     <!-- <span class="badge rounded-pill"><a href="">Change Dates</a></span> -->

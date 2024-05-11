@@ -182,12 +182,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <div class="container">
 
-<div class="card mt-5 shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 10rem;">
+<!-- <div class="card mt-5 shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 10rem;">
   <img src="icons/folder.png" class="card-img-top " alt="...">
   <div class="card-body">   
     <a class="card-text " href="">Some quick</a>
   </div>
-</div>
+</div> -->
+
+
+
+<!-- <div class="card" style="width: 13rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Somee up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div> -->
 
 </div>
 <!-- ---------------end---center----------------------- -->
