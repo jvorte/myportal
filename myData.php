@@ -67,26 +67,7 @@ try{
 }
 
 
-// Attempt select query execution (myData-user vacations)
-$id=$_SESSION['id'];
-try{
 
-  $sql = "SELECT * FROM vacations WHERE user_id = $id ";  
-  $result = $pdo->query($sql);
-  if($result->rowCount() > 0){
-     
-      while($row = $result->fetch()){
-       $from = $row['from_date'] ;
-       $until = $row['until_date'];      
-      
-       }
-
-      // Free result set
-      unset($result);
-  } 
-} catch(PDOException $e){
-  die("ERROR: Could not able to execute $sql. " . $e->getMessage());
-}
 // --------------------------------1.Modal--address------------------------------------------------
        // Define variables and initialize with empty values
             
@@ -197,10 +178,29 @@ try{
           $time = trim($_POST["time"]);  
       }
          
-        $sql = "INSERT INTO  meeting   (id_user , date, time ) VALUES ('$id','$date', '$time')";   
+        $sql = "INSERT INTO  meeting   (user_id , date, time ) VALUES ('$id','$date', '$time')";   
         $pdo->exec($sql);
   
        }
+
+       //Delete
+
+       if (isset($_POST['submit6']))
+       { 
+          // Attempt update query execution
+          try{
+            $sql = "DELETE FROM meeting WHERE user_id ='$id'";  
+            $pdo->exec($sql);
+            // echo "Records were deleted successfully.";
+          } catch(PDOException $e){
+            die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+          }
+
+          header('Location: myData.php');
+          die();
+        }
+
+       //End delete
 // --------------------------------4.End Modal--Meeting------------------------------------------------
 
 
@@ -223,15 +223,38 @@ try{
         $until = trim($_POST["until"]);  
     }
        
-      $sql = "INSERT INTO  vacations   (id_user , from_date, until_date ) VALUES ('$id','$from', '$until')";   
+      $sql = "INSERT INTO  vacations   (user_id , from_date, until_date ) VALUES ('$id','$from', '$until')";   
       $pdo->exec($sql);
+      
+         header('Location: myData.php');
+         die();
 
      }
+
+
+
+
+
+      //Delete Vacations
+
+      if (isset($_POST['submit7']))
+      { 
+         // Attempt update query execution
+         try{
+           $sql = "DELETE FROM vacations WHERE user_id ='$id'";  
+           $pdo->exec($sql);
+           // echo "Records were deleted successfully.";
+         } catch(PDOException $e){
+           die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+         }
+         header('Location: myData.php');
+         die();
+
+      
+       }
+
+      //End delete Vacations
 // --------------------------------5.End Modal--Vacations------------------------------------------------
-
-// Close connection
-
-unset($pdo);
 ?>
 
  
@@ -356,7 +379,7 @@ unset($pdo);
     </div> 
     <!-- <span class="badge  rounded-pill"><a href="changeAddress.php?user_id=<?php echo $id?>">Change Address</a></span> -->
     <span class="badge  rounded-pill">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+      <button type="button" class="btn btn-primary"   style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .85rem;'  data-bs-toggle="modal" data-bs-target="#exampleModal1">
       Change Address
       </button>
     </span>
@@ -368,8 +391,8 @@ unset($pdo);
       <?php echo $mobile?>
     </div> 
     <!-- <span class="badge  rounded-pill"><a href="changeMobile.php?user_id=<?php echo $id?>">Change Mobile Number</a></span> -->
-    <span class="badge  rounded-pill">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+    <span class="badge rounded-pill">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .85rem;' data-bs-target="#exampleModal2">
       Change Mobile Number
       </button>
     </span>
@@ -382,7 +405,7 @@ unset($pdo);
     </div>
     <!-- <span class="badge  rounded-pill"><a href="changeEmail.php?user_id=<?php echo $id?>">Change Email Address</a></span>  -->
     <span class="badge  rounded-pill">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+      <button type="button" class="btn btn-primary " style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .85rem;' data-bs-toggle="modal" data-bs-target="#exampleModal3">
       Change Email Address
       </button>
     </span>
@@ -399,25 +422,63 @@ unset($pdo);
       <div class=" fs-5">Meet My SuperVisor</div>
  
      <div class=" fs-6">Date:<?php echo (isset($date ))?( $date) : ( " --"); ?></div>
-     <div class=" fs-6">Time:<?php echo (isset($time ))?( $time) : ( " --"); ?></div>
+   
+     <div class=" fs-6">Time:<?php echo (isset($time ))?( $time)." <button type='button' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' 
+     class='btn btn-link' data-bs-toggle='modal' data-bs-target='#staticBackdrop1'>Delete</button>" : ( " --"); ?>
+     </div>
+      
     </div>
+ 
     <!-- <span class="badge  rounded-pill"><a href="">Cancel Meeting</a></span> -->
     <span class="badge  rounded-pill">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4">
-      My Meeting
-      </button>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal"  style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .85rem;'  data-bs-target="#exampleModal4">
+      My Meeting 
     </span>
+    
+    
   </li>
+  
+
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class=" fs-5">My Vacations</div>
-      <div class=" fs-6">from:<?php echo (isset($from ))?( $from) : ( " --"); ?></div>
-      <div class=" fs-6">until:<?php echo (isset($until ))?( $until) : ( " --"); ?></div>
+<?php 
+// Attempt select query execution (myData-user vacations)
+$id=$_SESSION['id'];
+try{
+
+  $sql = "SELECT * FROM vacations WHERE user_id = $id ";  
+  $result = $pdo->query($sql);
+  if($result->rowCount() > 0){
+     
+      while($row = $result->fetch()){
+       $from = $row['from_date'] ;
+       $until = $row['until_date']; ?>
+       <div class=" fs-6">from:<?php echo (isset($from ))?( $from) : ( " --"); ?></div>
+       <div class=" fs-6">until:<?php echo (isset($until ))?( $until)." <button type='button' style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;' 
+      class='btn btn-link' data-bs-toggle='modal' data-bs-target='#staticBackdrop2'>Delete</button>" : ( " --"); ?>
+      </div>     
+  <?php
+       }
+
+      // Free result set
+      unset($result);
+  } 
+} catch(PDOException $e){
+  die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+
+   // Close connection
+   unset($pdo);
+
+?>
+
+     
     
     </div>
     <!-- <span class="badge rounded-pill"><a href="">Change Dates</a></span> -->
     <span class="badge  rounded-pill">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal5">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal"  style='--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .85rem;'  data-bs-target="#exampleModal5">
       My Vacations
       </button>
     </span>
@@ -438,6 +499,61 @@ unset($pdo);
 
 </div>
 <!-- ---------------end---center----------------------- -->
+
+
+  <!-- -------------------modal 6 to check delete meeting---------------------------------- -->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete your Meeting Date?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <form action="" method="post">
+        <button type="submit" name="submit6" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- -----------------end--modal 6 to check delete meeting---------------------------------- -->
+
+    <!-- -------------------modal 7 to check delete Vacations---------------------------------- -->
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      Do you want to delete your Vactions Date?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <form action="" method="post">
+        <button type="submit" name="submit7" class="btn btn-danger">Delete</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- -----------------end--modal 7 to check delete Vacations---------------------------------- -->
 
 
                                    <!-- Modals -->
@@ -598,9 +714,9 @@ unset($pdo);
             <div class="col-sm-6">
             <label for="inputEmail4" class="form-label">Wish Date</label>
             <form action="" method="POST">         
-            <input type="date" class="form-control<?php echo (!empty($confirm_date_err)) ? 'is-invalid' : ''; ?>" name="date">
+            <input type="date" class="form-control<?php echo (!empty($confirm_date_err)) ? 'is-invalid' : ''; ?>" name="date" required>
             <span class="invalid-feedback"><?php echo $date_err; ?></span>
-            <input type="time" class="form-control my-3 <?php echo (!empty($confirm_time_err)) ? 'is-invalid' : ''; ?>"  name="time">
+            <input type="time" class="form-control my-3 <?php echo (!empty($confirm_time_err)) ? 'is-invalid' : ''; ?>"  name="time" required>
             <span class="invalid-feedback"><?php echo $time_err; ?></span>
             <button type="submit" name="submit4" class="btn btn-primary">Save changes</button>
           </form>
@@ -626,6 +742,7 @@ unset($pdo);
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">My Vacations</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+   
       </div>
       <div class="modal-body">
         <!-- ---------------------------------------- -->
@@ -634,10 +751,10 @@ unset($pdo);
             <label for="inputEmail4" class="form-label"></label>
                 <form action="" method="POST">
                   <label for="birthday">From:</label>
-                  <input type="date" id="vocation" name="from" class="form-control my-3 <?php echo (!empty($confirm_from_err)) ? 'is-invalid' : ''; ?>" > 
+                  <input type="date" id="vocation" name="from" class="form-control my-3 <?php echo (!empty($confirm_from_err)) ? 'is-invalid' : ''; ?>" required> 
                   <span class="invalid-feedback"><?php echo $from_err; ?></span>
                   <label for="birthday">Until:</label>
-                  <input type="date" id="vacations" name="until" class="form-control my-3 <?php echo (!empty($confirm_until_err)) ? 'is-invalid' : ''; ?>" >                 
+                  <input type="date" id="vacations" name="until" class="form-control my-3 <?php echo (!empty($confirm_until_err)) ? 'is-invalid' : ''; ?>"required >                 
                   <span class="invalid-feedback"><?php echo $until_err; ?></span>
       
 
@@ -658,6 +775,8 @@ unset($pdo);
 
 
                                   <!-- end Modals -->
+
+                                  
 
     <footer class="footer">
   <h6 class="text-center  fs-6 bg-dark text-light">D.Vortelinas Copyright<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">
