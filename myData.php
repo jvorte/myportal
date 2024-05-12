@@ -415,6 +415,8 @@ try{
     
     
   </li>
+
+
   
 
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -435,9 +437,13 @@ try{
        $until = $row['until_date']; ?>
        <div class=" fs-6" >from: <?php echo $from?></div>
        <div class=" fs-6">until: <?php echo $until ?>
-      <a href="delete_vacation.php?vacation_id=<?php echo $vacation_id?>"> Delete</a>
-      </div>     
+
+
+      <a href="delete_vacation.php?vacation_id=<?php echo $vacation_id?> "> Delete</a>
+      </div>
+    
   <?php
+  
        }
      
     
@@ -456,7 +462,7 @@ try{
 
 ?>
 
-<!-- <?php echo $vacation_id?>   -->
+
     
     </div>
     <!-- <span class="badge rounded-pill"><a href="">Change Dates</a></span> -->
@@ -510,33 +516,9 @@ try{
 </div>
 
   <!-- -----------------end--modal 6 to check delete meeting---------------------------------- -->
-
-    <!-- -------------------modal 7 to check delete Vacations---------------------------------- -->
-<!-- Button trigger modal -->
+  
 
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      Do you want to delete your Vactions Date?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <form action="" method="post">
-        <button type="submit" name="submit7" class="btn btn-danger">Delete</button>
-      </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- -----------------end--modal 7 to check delete Vacations---------------------------------- -->
 
 
                                    <!-- Modals -->

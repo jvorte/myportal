@@ -26,3 +26,5 @@ if (isset($_GET['vacation_id']))
 //End delete Vacations
 // ----------------------------
 ?>
+</body>
+</html>

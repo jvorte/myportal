@@ -1,4 +1,6 @@
 <?php
+
+
 // Initialize the session
 session_start();
  
@@ -12,32 +14,37 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 require_once "login_system/config.php";
 
 
-// Upload File  My Documents Check if the form was submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    // Check if file was uploaded without errors
-    if(isset($_FILES["file"]) && $_FILES["file"]["error"] == 0){
-   
-        $filename = $_FILES["file"]["name"];
-    
-        // Verify file extension
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
-    
-     
-            if(file_exists("upload_doc/" . $filename)){
-                echo $filename . " is already exists.";
-            } else{
-                move_uploaded_file($_FILES["file"]["tmp_name"], "upload_doc/" . $filename);
-                echo "Your file was uploaded successfully.";
-            } 
-          }
-}
+	if(ISSET($_POST['upload'])){
+    $id=$_SESSION["id"];
+		$file_name = $_FILES['file']['name'];
+		$file_temp = $_FILES['file']['tmp_name'];
+		$file_size = $_FILES['file']['size'];
+		$file_type = $_FILES['file']['type'];
+		$date_uploaded=date("Y-m-d");
+		$location="upload_doc/".$file_name;
+		if($file_size < 5242880){
+			if(move_uploaded_file($file_temp, $location)){
+				try{
+					$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+					$sql = "INSERT INTO `documents`(id, file_name, file_type, date_uploaded, location)  VALUES ('$id','$file_name', '$file_type', '$date_uploaded', '$location')";
+					$pdo->exec($sql);
+				}catch(PDOException $e){
+					echo $e->getMessage();
+				}
+ 
+				$pdo = null;
+				header('location: myDocuments.php');
+			}
+		}else{
+			echo "<center><h3 class='text-danger'>File too large to upload!</h3></center>";
+		}
+	}
+
+
 
 
 ?>
- 
-
-
 
 <!-- ---------------------------------------------------------------------
  -->
@@ -99,7 +106,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z"/>
       </svg>
       Welcome , <?php echo htmlspecialchars($_SESSION["username"]); ?></a>
-     
+
+
        </li>
       <li class="nav-item">        
         <a href="login_system/reset-password.php" class="nav-link">
@@ -143,9 +151,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <h1 class="mt-5 display-4">My Documents</h1> 
 </div>
 
-
 <!-- Button trigger modal -->
-<div class="container">
+<div class="container animate__animated animate__backInUp">
 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
  Upload file
 </button>
@@ -171,23 +178,65 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <div class="modal-footer">
 
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" name="submit" class= "btn btn-primary">Upload</button>
+        <button type="submit" name="upload" class= "btn btn-primary">Upload</button>
       </div>
       </form>
     </div>
   </div>
 </div>
 
+<div class="container animate__animated animate__backInUp">
+<?php
 
 
-<div class="container">
+$id=$_SESSION['id'];
 
-<div class="card mt-5 shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 10rem;">
-  <img src="icons/folder.png" class="card-img-top " alt="...">
-  <div class="card-body">   
-    <a class="card-text " href="">Some quick</a>
-  </div>
-</div>
+
+// Attempt select query execution
+try{
+    $sql = "SELECT * FROM documents WHERE id = $id";   
+    $result = $pdo->query($sql);
+    if($result->rowCount() > 0){
+
+        while($row = $result->fetch()){ 
+          $file_id = $row['file_id'];
+          $file_name = $row['file_name'];
+          $date_uploaded = $row['date_uploaded'];
+          $location = $row['location'];
+          ?>
+          
+          <div class="card mt-5 ms-5" style="width: 18rem; height: 14rem; float: left;">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $file_name; ?></h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">File type: <?php echo $row['file_type']; ?></h6>
+              <p class="card-text">Uploaded: <?php echo $date_uploaded; ?></p>
+              <p class="card-text">Location: <?php echo $location; ?></p>
+              <a href="#" class="card-link">View</a>
+              <a href="#" class="card-link">Download</a>
+              <a href="delete_doc.php?doc_id=<?php echo $file_id?>&name=<?php echo $file_name?>" class="card-link mt-5 ">Delete</a>
+            </div>
+          </div>
+
+          
+          <?php
+        
+        }
+    ;
+        // Free result set
+        unset($result);
+    } else{
+        echo "No records matching your query were found.";
+    }
+} catch(PDOException $e){
+    die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+}
+ 
+// Close connection
+unset($pdo);
+
+
+
+?>
 
 </div>
 <!-- ---------------end---center----------------------- -->
