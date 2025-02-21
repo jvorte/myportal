@@ -93,10 +93,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </li>
     
       </ul>
-      <!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-       </form> -->
+
     </div>
   </div>
 </nav>
@@ -105,14 +102,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <!-- ---------------center----------------------- -->
 
-<!-- <div class="container pt-4 animate__animated animate__backInDown">
-
-        <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
-        <button type="submit" class="btn btn-danger"><span class="bi-search"></span> Search</button>
-       </form>
-
-</div> -->
 <div class="container title animate__animated animate__backInUp">
 <h1 class="mt-5 display-4">MyPortal</h1> 
 </div>
@@ -125,7 +114,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   <!-- ---------------------------left-area--------------------------------- -->
     <h2><img src="" alt="" srcset="">Usefull Links</h2>
 
-        <ul class="list-group list-group-flush mt-5 text-start ">
+        <ul class="list-group list-group-flush  text-start ">
         <li class="list-group-item"><a href="myDocuments.php"><i class="bi bi-files"></i> My Documents</a></li>
         <li class="list-group-item"><a href="insertCertificate.php"><i class="bi bi-paperclip"></i> Insert Certificate Of Your Illness</a></li>
         <li class="list-group-item"><a href="myData.php"><i class="bi bi-piggy-bank"></i> Meet My Supervisor</a></li>
@@ -141,7 +130,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <div class="right-panel p-3 border animate__animated animate__backInUp">
          <!-- ---------------------------right-area--------------------------------- -->
          <h2><img src="" alt="" srcset="">Favorites</h2>
-         <ul class="list-group list-group-flush mt-5 text-start ">
+         <ul class="list-group list-group-flush  text-start ">
          <li class="list-group-item"><a href=""><i class="bi bi-alphabet"></i> Online Lessons</a></li>         
          <li class="list-group-item"><a href=""><i class="bi bi-luggage"></i> Plan your business trip</a></li>
          <li class="list-group-item"><a href=""><i class="bi bi-emoji-smile"></i> Premiums  for Εmployees</a></li>
